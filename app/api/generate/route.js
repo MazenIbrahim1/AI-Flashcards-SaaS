@@ -14,27 +14,28 @@ const systemPrompt = `
       }
     ]
   }
-`
+`;
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
-  apiVersion: '2022-11-15',
-})
+  apiVersion: "2022-11-15",
+});
 
 export async function POST(req) {
-  const openai = OpenAI()
-  const data = await req.text()
+  const openai = OpenAI();
+  const data = await req.text();
 
   const completion = await openai.chat.completion.create({
     messages: [
-      { role: 'system', content: systemPrompt },
-      { role: 'user', content: data }
+      { role: "system", content: systemPrompt },
+      { role: "user", content: data },
     ],
     model: "gpt-4o",
-    response_format: { type: 'json_object' }
-  })
+    response_format: { type: "json_object" },
+  });
+
+  const flashcards = JSON.parse(completion.choices[0].nessage.content);
+
+  return NextResponse.json(flashcards.flashcards);
 }
 
-
-export async function generate(req) {
-
-}
+export async function generate(req) {}
