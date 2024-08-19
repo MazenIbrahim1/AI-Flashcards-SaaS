@@ -125,7 +125,6 @@ export default function Generate() {
             </Button>
           </Paper>
         </Box>
-        {console.log("FLASHCARDSSSS:", flashcards)}
         {flashcards.length > 0 && (
           <Box sx={{ mt: 4 }}>
             <Typography variant="h5" gutterBottom>
@@ -150,7 +149,7 @@ export default function Generate() {
                               position: "relative",
                               width: "100%",
                               height: "200px",
-                              boxShadow: "0 4px 8px 0 rgba(0,0,0 0.2)",
+                              boxShadow: "0 4px 8px 0 rgba(0,0,0, 0.2)",
                               transform: flipped[index]
                                 ? "rotateY(180deg)"
                                 : "rotateY(0deg)",
