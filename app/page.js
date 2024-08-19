@@ -14,7 +14,7 @@ import Head from "next/head";
 export default function Home() {
   return (
     <>
-      <Container maxWidth="100vw">
+      <Container maxWidth="100vw" disableGutters>
         <AppBar position="static">
           <Toolbar>
             <Typography variant="h6" style={{ flexGrow: 1 }}>
@@ -33,6 +33,8 @@ export default function Home() {
           <title>Flashcard SaaS</title>
           <meta name="description" content="Create flashcards from your text" />
         </Head>
+      </Container>
+      <Container maxWidth="100vw">
         <Box
           display="flex"
           flexDirection="column"
