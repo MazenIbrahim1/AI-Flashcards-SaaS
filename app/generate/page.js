@@ -17,11 +17,14 @@ import {
   Paper,
   TextField,
   Typography,
+  AppBar,
+  Toolbar,
 } from "@mui/material";
 import { collection, doc, getDoc, writeBatch } from "firebase/firestore";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { db } from "@/firebase";
+import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 
 export default function Generate() {
   const { isLoaded, isSignedIn, user } = useUser();
@@ -93,6 +96,26 @@ export default function Generate() {
 
   return (
     <>
+      <Container maxWidth="100vw" disableGutters>
+        <AppBar position="static">
+          <Toolbar>
+            <Typography variant="h6" style={{ flexGrow: 1 }}>
+              Flashcard SaaS
+            </Typography>
+            <SignedOut>
+              <Button color="inherit" href="/sign-in">
+                Login
+              </Button>
+              <Button color="inherit" href="/sign-up">
+                Sign Up
+              </Button>
+            </SignedOut>
+            <SignedIn>
+              <UserButton />
+            </SignedIn>
+          </Toolbar>
+        </AppBar>
+      </Container>
       <Container>
         <Box
           sx={{
@@ -229,6 +252,19 @@ export default function Generate() {
             <Button onClick={saveFlashcards}>Save</Button>
           </DialogActions>
         </Dialog>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            mt: 4,
+          }}
+        >
+          <Button variant="contained" href="/flashcards">
+            Return to Flashcards Page
+          </Button>
+        </Box>
       </Container>
     </>
   );
