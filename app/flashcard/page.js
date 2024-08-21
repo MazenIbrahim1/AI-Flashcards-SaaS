@@ -59,9 +59,12 @@ export default function Flashcard() {
       <Container maxWidth="100vw" disableGutters>
         <AppBar position="static">
           <Toolbar>
-            <Typography variant="h6" style={{ flexGrow: 1 }}>
-              Flashcard SaaS
-            </Typography>
+            <Button color="inherit" href="/" style={{ flexGrow: 1 }}>
+              <Typography variant="h6" component="div">
+                Flashcard SaaS
+              </Typography>
+            </Button>
+
             <SignedOut>
               <Button color="inherit" href="/sign-in">
                 Login
