@@ -43,14 +43,9 @@ export default function Flashcard() {
 
       setFlashcards(flashcards);
       console.log(flashcards);
-    }
-    try {
-      getFlashcard();
-    } catch (err) {
-      console.error(err);
-    } finally {
       setLoading(false);
     }
+    getFlashcard();
   }, [user, search]);
 
   const handleCardClick = (id) => {
