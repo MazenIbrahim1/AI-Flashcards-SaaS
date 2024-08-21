@@ -13,7 +13,7 @@ import {
 import Head from "next/head";
 import { useRouter } from "next/navigation";
 
-import { useTheme } from '@mui/material/styles'; // Import useTheme
+import { useTheme } from "@mui/material/styles"; // Import useTheme
 
 //testing
 
@@ -28,8 +28,6 @@ export default function Home() {
     }
     router.push("/flashcards");
   };
-
-
 
   const handleSubmit = async () => {
     const checkoutSession = await fetch("api/checkout_session", {
@@ -60,7 +58,10 @@ export default function Home() {
   return (
     <>
       <Container maxWidth="false" disableGutters>
-        <AppBar position="static" sx={{ backgroundColor: theme.palette.primary.main }}>
+        <AppBar
+          position="static"
+          sx={{ backgroundColor: theme.palette.primary.main }}
+        >
           <Toolbar>
             <Button color="inherit" href="/" style={{ flexGrow: 1 }}>
               <Typography variant="h6" component="div">
@@ -92,10 +93,16 @@ export default function Home() {
           justifyContent="center"
           alignItems="center"
           mt={4}
-
-          sx={{ backgroundColor: theme.palette.background.default, minHeight: '77vh' }}
+          sx={{
+            backgroundColor: theme.palette.background.default,
+            minHeight: "77vh",
+          }}
         >
-          <Typography variant="h2" gutterBottom sx={{ color: theme.palette.primary.main }}>
+          <Typography
+            variant="h2"
+            gutterBottom
+            sx={{ color: theme.palette.primary.main }}
+          >
             Welcome to Flashcard SaaS
           </Typography>
           <Typography variant="h5" gutterBottom>
@@ -104,21 +111,32 @@ export default function Home() {
           <Button
             variant="contained"
             color="primary"
-            sx={{ mt: 2, padding: '12px 24px' }}
+            sx={{ mt: 2, padding: "12px 24px" }}
             onClick={handleGetStarted}
           >
             Get Started!
           </Button>
         </Box>
-        <Box sx={{
-          my: 6, textAlign: 'center', backgroundColor: 'grey.100',
-        }}>
+        <Box
+          sx={{
+            my: 6,
+            textAlign: "center",
+            backgroundColor: "grey.100",
+          }}
+        >
           <Typography variant="h4" gutterBottom>
             Features
           </Typography>
           <Grid container spacing={4}>
             <Grid item xs={12} md={4}>
-              <Box sx={{ padding: 3, boxShadow: 1, borderRadius: 2, backgroundColor: theme.palette.background.paper }}>
+              <Box
+                sx={{
+                  padding: 3,
+                  boxShadow: 1,
+                  borderRadius: 2,
+                  backgroundColor: theme.palette.background.paper,
+                }}
+              >
                 <Typography variant="h6" gutterBottom>
                   Easy Text Input
                 </Typography>
@@ -129,7 +147,14 @@ export default function Home() {
               </Box>
             </Grid>
             <Grid item xs={12} md={4}>
-              <Box sx={{ padding: 3, boxShadow: 1, borderRadius: 2, backgroundColor: theme.palette.background.paper }}>
+              <Box
+                sx={{
+                  padding: 3,
+                  boxShadow: 1,
+                  borderRadius: 2,
+                  backgroundColor: theme.palette.background.paper,
+                }}
+              >
                 <Typography variant="h6" gutterBottom>
                   Smart Flashcards
                 </Typography>
@@ -140,7 +165,14 @@ export default function Home() {
               </Box>
             </Grid>
             <Grid item xs={12} md={4}>
-              <Box sx={{ padding: 3, boxShadow: 1, borderRadius: 2, backgroundColor: theme.palette.background.paper }}>
+              <Box
+                sx={{
+                  padding: 3,
+                  boxShadow: 1,
+                  borderRadius: 2,
+                  backgroundColor: theme.palette.background.paper,
+                }}
+              >
                 <Typography variant="h6" gutterBottom>
                   Accessible Anywhere
                 </Typography>
@@ -152,8 +184,8 @@ export default function Home() {
             </Grid>
           </Grid>
         </Box>
-        <Box sx={{ my: 6, textAlign: 'center', backgroundColor: 'grey.100', }}>
-          <Typography variant="h4" gutterBottom >
+        <Box sx={{ my: 6, textAlign: "center", backgroundColor: "grey.100" }}>
+          <Typography variant="h4" gutterBottom>
             Pricing
           </Typography>
           <Grid container spacing={4}>
@@ -164,7 +196,7 @@ export default function Home() {
                   border: `1px solid ${theme.palette.divider}`,
                   borderRadius: 2,
                   boxShadow: 4,
-                  backgroundColor: theme.palette.background.paper
+                  backgroundColor: theme.palette.background.paper,
                 }}
               >
                 <Typography variant="h5" gutterBottom>
@@ -176,11 +208,7 @@ export default function Home() {
                 <Typography>
                   Access to basic flashcard features and limited storage.
                 </Typography>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  sx={{ mt: 2 }}
-                >
+                <Button variant="contained" color="primary" sx={{ mt: 2 }}>
                   Choose Basic
                 </Button>
               </Box>
@@ -192,7 +220,7 @@ export default function Home() {
                   border: `1px solid ${theme.palette.divider}`,
                   borderRadius: 2,
                   boxShadow: 4,
-                  backgroundColor: theme.palette.background.paper
+                  backgroundColor: theme.palette.background.paper,
                 }}
               >
                 <Typography variant="h5" gutterBottom>

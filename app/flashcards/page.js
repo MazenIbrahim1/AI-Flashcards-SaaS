@@ -18,7 +18,7 @@ import {
   Button,
   Box,
   CardMedia,
-  CircularProgress, // Import CircularProgress for loading state
+  CircularProgress,
 } from "@mui/material";
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 
@@ -75,7 +75,20 @@ export default function Flashcards() {
   }, [user]);
 
   if (!isLoaded || !isSignedIn) return <></>;
-  if (loading) return <CircularProgress />; // Show loading indicator
+  if (loading)
+    return (
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100vh",
+        }}
+      >
+        <CircularProgress />
+      </Box>
+    ); // Show loading indicator
   if (error) return <Typography color="error">{error}</Typography>; // Show error message
 
   const handleCardClick = (id) => {
@@ -136,7 +149,14 @@ export default function Flashcards() {
                       alt={flashcard.name}
                     />
                   ) : (
-                    <Box sx={{ height: 140, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    <Box
+                      sx={{
+                        height: 140,
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                      }}
+                    >
                       <Typography variant="body2">No Image</Typography>
                     </Box>
                   )}
@@ -163,7 +183,7 @@ export default function Flashcards() {
           <Typography variant="h4" gutterBottom>
             Generate More
           </Typography>
-          <Button variant="contained" href="/generate" sx={{ width: '200px' }}>
+          <Button variant="contained" href="/generate" sx={{ width: "200px" }}>
             Add
           </Button>
         </Box>
