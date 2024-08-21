@@ -16,6 +16,7 @@ import {
   AppBar,
   Toolbar,
   Button,
+  CircularProgress,
 } from "@mui/material";
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 
@@ -23,6 +24,7 @@ export default function Flashcard() {
   const { isLoaded, isSignedIn, user } = useUser();
   const [flashcards, setFlashcards] = useState([]);
   const [flipped, setFlipped] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const searchParams = useSearchParams();
   const search = searchParams.get("id");
@@ -42,7 +44,13 @@ export default function Flashcard() {
       setFlashcards(flashcards);
       console.log(flashcards);
     }
-    getFlashcard();
+    try {
+      getFlashcard();
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
   }, [user, search]);
 
   const handleCardClick = (id) => {
@@ -53,6 +61,21 @@ export default function Flashcard() {
   };
 
   if (!isLoaded || !isSignedIn) return <></>;
+
+  if (loading)
+    return (
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100vh",
+        }}
+      >
+        <CircularProgress />
+      </Box>
+    );
 
   return (
     <>
@@ -151,12 +174,12 @@ export default function Flashcard() {
               variant="contained"
               href="/flashcards"
               sx={{
-                width: "15vw",
+                width: "10vw",
                 height: "5vh",
                 alignItems: "center",
               }}
             >
-              Return to Flashcards Page
+              Back
             </Button>
           </Box>
         </Grid>

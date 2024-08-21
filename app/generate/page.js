@@ -19,7 +19,7 @@ import {
   Typography,
   AppBar,
   Toolbar,
-  CircularProgress
+  CircularProgress,
 } from "@mui/material";
 import { collection, doc, getDoc, writeBatch } from "firebase/firestore";
 import { useRouter } from "next/navigation";
@@ -54,7 +54,6 @@ export default function Generate() {
         setLoading(false); // Stop loading even on error
       });
   };
-
 
   const handleCardClick = (id) => {
     setFlipped((prev) => ({
