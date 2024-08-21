@@ -19,6 +19,7 @@ import {
   Typography,
   AppBar,
   Toolbar,
+  CircularProgress
 } from "@mui/material";
 import { collection, doc, getDoc, writeBatch } from "firebase/firestore";
 import { useRouter } from "next/navigation";
@@ -33,16 +34,27 @@ export default function Generate() {
   const [text, setText] = useState("");
   const [name, setName] = useState("");
   const [open, setOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
+
   const router = useRouter();
 
   const handleSubmit = async () => {
+    setLoading(true); // Start loading
     fetch("api/generate", {
       method: "POST",
       body: text,
     })
       .then((res) => res.json())
-      .then((data) => SetFlashcards(data));
+      .then((data) => {
+        SetFlashcards(data);
+        setLoading(false); // Stop loading
+      })
+      .catch((error) => {
+        console.error(error);
+        setLoading(false); // Stop loading even on error
+      });
   };
+
 
   const handleCardClick = (id) => {
     setFlipped((prev) => ({
@@ -99,9 +111,12 @@ export default function Generate() {
       <Container maxWidth="100vw" disableGutters>
         <AppBar position="static">
           <Toolbar>
-            <Typography variant="h6" style={{ flexGrow: 1 }}>
-              Flashcard SaaS
-            </Typography>
+            <Button color="inherit" href="/" style={{ flexGrow: 1 }}>
+              <Typography variant="h6" component="div">
+                Flashcard SaaS
+              </Typography>
+            </Button>
+
             <SignedOut>
               <Button color="inherit" href="/sign-in">
                 Login
@@ -148,6 +163,14 @@ export default function Generate() {
             </Button>
           </Paper>
         </Box>
+        {loading && (
+          <Box sx={{ display: "flex", justifyContent: "center", mt: 4 }}>
+            <CircularProgress />
+            <Typography variant="h6" sx={{ ml: 2 }}>
+              Generating flashcards...
+            </Typography>
+          </Box>
+        )}
         {flashcards.length > 0 && (
           <Box sx={{ mt: 4 }}>
             <Typography variant="h5" gutterBottom>

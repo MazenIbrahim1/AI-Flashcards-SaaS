@@ -15,9 +15,12 @@ export default function SignUpPage() {
       <Container maxWidth="100vw" disableGutters>
         <AppBar position="static">
           <Toolbar>
-            <Typography variant="h6" sx={{ flexGrow: 1 }}>
-              Flashcard SaaS
-            </Typography>
+            <Button color="inherit" href="/" style={{ flexGrow: 1 }}>
+              <Typography variant="h6" component="div">
+                Flashcard SaaS
+              </Typography>
+            </Button>
+
             <Button color="inherit">
               <Link href="/sign-in" passHref>
                 Login
