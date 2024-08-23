@@ -36,7 +36,15 @@ export default function Home() {
         origin: "http://localhost:3001",
       },
     });
-
+  };
+  const proHandleSubmit = async () => {
+    // $10 subscription plan
+    const checkoutSession = await fetch("api/checkout_session/ten_dollars", {
+      method: "POST",
+      headers: {
+        origin: "http://localhost:3001",
+      },
+    });
     const checkoutSessionJson = await checkoutSession.json();
 
     if (checkoutSessionJson.statusCode === 500) {
@@ -53,6 +61,48 @@ export default function Home() {
       console.warn(error.message);
     }
   };
+
+  const basicHandleSubmit = async () => {
+    // $5 subscription plan
+    const checkoutSession = await fetch("api/checkout_session/five_dollars", {
+      method: "POST",
+      headers: {
+        origin: "http://localhost:3001",
+      },
+    });
+    const checkoutSessionJson = await checkoutSession.json();
+
+    if (checkoutSessionJson.statusCode === 500) {
+      console.error(checkoutSession.message);
+      return;
+    }
+
+    const stripe = await getStripe();
+    const { error } = await stripe.redirectToCheckout({
+      sessionId: checkoutSessionJson.id,
+    });
+
+    if (error) {
+      console.warn(error.message);
+    }
+  };
+
+  //   const checkoutSessionJson = await checkoutSession.json();
+
+  //   if (checkoutSessionJson.statusCode === 500) {
+  //     console.error(checkoutSession.message);
+  //     return;
+  //   }
+
+  //   const stripe = await getStripe();
+  //   const { error } = await stripe.redirectToCheckout({
+  //     sessionId: checkoutSessionJson.id,
+  //   });
+
+  //   if (error) {
+  //     console.warn(error.message);
+  //   }
+  // };
   const theme = useTheme(); // Access the theme
 
   return (
@@ -208,7 +258,12 @@ export default function Home() {
                 <Typography>
                   Access to basic flashcard features and limited storage.
                 </Typography>
-                <Button variant="contained" color="primary" sx={{ mt: 2 }}>
+                <Button
+                  onClick={basicHandleSubmit}
+                  variant="contained"
+                  color="primary"
+                  sx={{ mt: 2 }}
+                >
                   Choose Basic
                 </Button>
               </Box>
@@ -236,7 +291,7 @@ export default function Home() {
                   variant="contained"
                   color="primary"
                   sx={{ mt: 2 }}
-                  onClick={handleSubmit}
+                  onClick={proHandleSubmit}
                 >
                   Choose Pro
                 </Button>
