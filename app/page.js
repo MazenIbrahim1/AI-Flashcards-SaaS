@@ -170,6 +170,7 @@ export default function Home() {
         <Box
           sx={{
             my: 6,
+            p: 2,
             textAlign: "center",
             backgroundColor: "grey.100",
           }}
@@ -234,7 +235,9 @@ export default function Home() {
             </Grid>
           </Grid>
         </Box>
-        <Box sx={{ my: 6, textAlign: "center", backgroundColor: "grey.100" }}>
+        <Box
+          sx={{ my: 6, p: 2, textAlign: "center", backgroundColor: "grey.100" }}
+        >
           <Typography variant="h4" gutterBottom>
             Pricing
           </Typography>
