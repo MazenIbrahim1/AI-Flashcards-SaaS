@@ -181,7 +181,9 @@ export default function Flashcards() {
           }}
         >
           <Typography variant="h4" gutterBottom>
-            Generate More
+            {flashcards.length == 0
+              ? "Generate Your First Set!"
+              : "Generate More!"}
           </Typography>
           <Button variant="contained" href="/generate" sx={{ width: "200px" }}>
             Add

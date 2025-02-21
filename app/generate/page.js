@@ -283,7 +283,7 @@ export default function Generate() {
             mt: 4,
           }}
         >
-          <Button variant="contained" href="/flashcards">
+          <Button sx={{ mb: 2 }} variant="contained" href="/flashcards">
             Return to Flashcards Page
           </Button>
         </Box>
