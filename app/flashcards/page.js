@@ -41,26 +41,26 @@ export default function Flashcards() {
           const collections = docSnap.data().flashcards || [];
           setFlashcards(collections);
 
-          const imagePromises = collections.map(async (flashcard) => {
-            try {
-              const imageUrl = await fetchImage(flashcard.name);
-              console.log(`Image URL for ${flashcard.name}:`, imageUrl); // Log URL for each flashcard
-              return { name: flashcard.name, imageUrl };
-            } catch (error) {
-              console.error("Error fetching image:", error);
-              return { name: flashcard.name, imageUrl: null };
-            }
-          });
+          // const imagePromises = collections.map(async (flashcard) => {
+          //   try {
+          //     const imageUrl = await fetchImage(flashcard.name);
+          //     console.log(`Image URL for ${flashcard.name}:`, imageUrl); // Log URL for each flashcard
+          //     return { name: flashcard.name, imageUrl };
+          //   } catch (error) {
+          //     console.error("Error fetching image:", error);
+          //     return { name: flashcard.name, imageUrl: null };
+          //   }
+          // });
 
-          const imageResults = await Promise.all(imagePromises);
-          const imagesMap = imageResults.reduce((acc, { name, imageUrl }) => {
-            console.log(`Image result for ${name}:`, imageUrl); // Log each image result
-            acc[name] = imageUrl;
-            return acc;
-          }, {});
+          // const imageResults = await Promise.all(imagePromises);
+          // const imagesMap = imageResults.reduce((acc, { name, imageUrl }) => {
+          //   console.log(`Image result for ${name}:`, imageUrl); // Log each image result
+          //   acc[name] = imageUrl;
+          //   return acc;
+          // }, {});
 
-          console.log("Images Map:", imagesMap); // Log images map
-          setImages(imagesMap);
+          // console.log("Images Map:", imagesMap); // Log images map
+          // setImages(imagesMap);
         } else {
           await setDoc(docRef, { flashcards: [] });
         }

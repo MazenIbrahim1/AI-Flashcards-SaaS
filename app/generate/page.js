@@ -32,6 +32,7 @@ export default function Generate() {
   const [flashcards, SetFlashcards] = useState([]);
   const [flipped, setFlipped] = useState([]);
   const [text, setText] = useState("");
+  const [quantity, setQuantity] = useState(0);
   const [name, setName] = useState("");
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -42,7 +43,10 @@ export default function Generate() {
     setLoading(true); // Start loading
     fetch("api/generate", {
       method: "POST",
-      body: text,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ text, quantity }),
     })
       .then((res) => res.json())
       .then((data) => {
@@ -149,6 +153,15 @@ export default function Generate() {
               fullWidth
               multiline
               rows={4}
+              variant="outlined"
+              sx={{ mb: 2 }}
+            />
+            <TextField
+              value={quantity}
+              onChange={(e) => setQuantity(Number(e.target.value))}
+              label="Enter Quantity"
+              type="number"
+              fullWidth
               variant="outlined"
               sx={{ mb: 2 }}
             />
