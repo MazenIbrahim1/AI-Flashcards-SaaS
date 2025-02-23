@@ -6,7 +6,7 @@ Coming soon...
 
 ## Description
 
-This project is a SaaS AI flashcard generator designed to help users quickly create study materials based on any topic of their choice. The platform utilizes artificial intelligence through the OpenAI API to generate 10 concise and relevant flashcards based on the user's input. If the user desires, the set of flashcards are stored in Firestore.
+This project is a SaaS AI flashcard generator designed to help users quickly create study materials based on any topic of their choice. The platform utilizes artificial intelligence through the OpenAI API to generate the number of requested flashcards to be concise and relevant based on the user's text input. If the user desires, the set of flashcards are stored in Firestore.
 
 ## Tech Stack
 
@@ -37,6 +37,6 @@ This project is a SaaS AI flashcard generator designed to help users quickly cre
 
 4. Generate a flashcard set using the Add button
 
-5. Enter information in the text for the AI to create 10 related flashcards
+5. Enter information in the text and the amount of flashcards for the AI to generate
 
 6. Save the flashcards that can be accessed in the dashboard
