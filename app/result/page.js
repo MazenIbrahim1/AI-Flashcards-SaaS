@@ -11,7 +11,7 @@ import {
   Typography,
 } from "@mui/material";
 
-const resultPage = () => {
+const ResultPage = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const session_id = searchParams.get("session_id");
@@ -108,4 +108,4 @@ const resultPage = () => {
   );
 };
 
-export default resultPage;
+export default ResultPage;

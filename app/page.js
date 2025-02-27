@@ -37,6 +37,7 @@ export default function Home() {
       },
     });
   };
+
   const proHandleSubmit = async () => {
     // $10 subscription plan
     const checkoutSession = await fetch("api/checkout_session/ten_dollars", {
