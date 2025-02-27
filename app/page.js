@@ -61,7 +61,7 @@ export default function Home() {
   const basicHandleSubmit = async () => {
     // $5 subscription plan
     if (!isSignedIn) {
-      alert("You must be signed in to generate flashcards.");
+      alert("You must be signed in to subscribe");
       return;
     }
 
