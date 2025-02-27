@@ -10,7 +10,6 @@ export async function POST(req) {
   const openai = new OpenAI();
   const data = await req.json();
   const number = data.quantity || 10;
-  console.log("ASDWASQW: ", number);
 
   const systemPrompt = `
   You are a flashcard creator. Given the input text, produce flashcards where both the front and back are one sentence long.
@@ -54,3 +53,7 @@ export async function POST(req) {
 }
 
 export async function generate(req) {}
+
+export async function GET(req) {
+  return Response.json({ message: "API is working" });
+}
