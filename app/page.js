@@ -29,17 +29,12 @@ export default function Home() {
     router.push("/flashcards");
   };
 
-  const handleSubmit = async () => {
-    const checkoutSession = await fetch("api/checkout_session", {
-      method: "POST",
-      headers: {
-        origin: "http://localhost:3001",
-      },
-    });
-  };
-
   const proHandleSubmit = async () => {
     // $10 subscription plan
+    if (!isSignedIn) {
+      alert("You must be signed in to subscribe");
+      return;
+    }
     const checkoutSession = await fetch("api/checkout_session/ten_dollars", {
       method: "POST",
       headers: {
@@ -65,6 +60,11 @@ export default function Home() {
 
   const basicHandleSubmit = async () => {
     // $5 subscription plan
+    if (!isSignedIn) {
+      alert("You must be signed in to generate flashcards.");
+      return;
+    }
+
     const checkoutSession = await fetch("api/checkout_session/five_dollars", {
       method: "POST",
       headers: {
