@@ -2,7 +2,7 @@
 
 ## Live URL
 
-Coming soon...
+https://flashcardai-pi.vercel.app/
 
 ## Description
 
@@ -29,7 +29,7 @@ This project is a SaaS AI flashcard generator designed to help users quickly cre
 
 ## Usage
 
-1. Route to the home page of the website: < Coming soon >
+1. Route to the home page of the website: https://flashcardai-pi.vercel.app/
 
 2. Sign Up using your Email and a Password
 
