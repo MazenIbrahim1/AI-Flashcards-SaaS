@@ -35,7 +35,7 @@ This project is a SaaS AI flashcard generator designed to help users quickly cre
 
 3. Head to the dashboard using the "Get Started" button
 
-4. Generate a flashcard set using the Add button
+4. Generate a flashcard set using the Add button (Due to vercel's free deployment version, only 6 flashcards at one time since more than that takes longer than 10 seconds)
 
 5. Enter information in the text and the amount of flashcards for the AI to generate
 

@@ -6,6 +6,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
   apiVersion: "2022-11-15",
 });
 
+// In production only 6 flashcards allowed due to vercel limitations
 export async function POST(req) {
   const openai = new OpenAI();
   const data = await req.json();
