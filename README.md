@@ -1,4 +1,4 @@
-# Welcome to Pantry Nest
+# Welcome to AI Flaschards
 
 ## Live URL
 
